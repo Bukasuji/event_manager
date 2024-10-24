@@ -1,0 +1,482 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management</title>
+  <link rel="stylesheet" href="dist/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/src/script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+</head>
+
+<body id="body" class="bg-gray-200 text-gray-800 dark:text-gray-200 transition-colors duration-500" >
+
+  <!-- Sidebar -->
+  <div class="md:flex bg-white dark:bg-[#484554] ">
+    <div class="bg-white dark:bg-[#484554] py-4 md:hidden">
+      <div class="flex">
+          <div id="logo" class="flex dark:text-white text-black text-lg font-bold pl-4 transition-all duration-300">
+            <span class="ml-1" >LOgGO</span>
+          </div>
+
+          <div id="hamburger-btn" class="md:hidden ml-auto">
+            <img src="/asset/icon/hamburgar.svg" alt="hamburgar" class="w-6 h-6 mr-5 ml-auto">
+          </div>
+      </div>
+
+      <div id="nav-menu" class="fixed inset-0 bg-white dark:bg-[#484554] dark:text-white hidden space-y-8 z-40">
+        <!-- Logo -->
+        <div id="logo" class="flex dark:text-white border-b text-black text-lg font-bold pt-10 pb-4 px-4 transition-all duration-300">
+          <span class="ml-1" >LOgGO</span>
+          <div id="close-btn" class="border text-sm dark:text-black dark:bg-white rounded-full py px-2 ml-auto">x</div>
+        </div>
+
+        <!-- Home Icon -->
+        <div class="flex items-center px-4 items-center mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/home.svg" alt="Home Icon" class="w-6 h-6 mr-5">
+          <span class="text-md sm:block">Home</span>
+        </div>
+    
+        <!-- Events Icon -->
+        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/events.svg" alt="Events Icon" class="w-5 h-5 mr-5 ml-1">
+          <span class="text-md sm:block">Events</span>
+        </div>
+
+         <!-- Speakers Icon -->
+         <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/speaker.svg" alt="speaker Icon" class="w-5 h-5 mr-5 ml-1">
+          <span class="text-md sm:block">Speakers</span>
+        </div>
+
+        <!-- Report Icon -->
+        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/reports.svg" alt="report Icon" class="w-5 h-5 mr-5 ml-1">
+          <span class="text-md sm:block">Reports</span>
+        </div>
+    
+        <!-- Notification Icon -->
+        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/notification.svg" alt="Notification Icon" class="w-6 h-6 mr-5">
+          <span class="text-md sm:block">Notification</span>
+        </div>
+
+        <!-- Messages Icon -->
+        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/messages.svg" alt="Messages Icon" class="w-6 h-6 mr-5">
+          <span class="text-md sm:block">Messages</span>
+        </div>
+
+        <!-- Settings Icon -->
+        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/setting.svg" alt="Setting Icon" class="w-6 h-6 mr-5">
+          <span class="text-md sm:block">Settings</span>
+        </div>
+
+        <!-- Collapse Icon -->
+        <div class="flex items-center mt-4 hover:bg-gray-700 px-4 cursor-pointer" onclick="toggleSidebar()">
+          <img src="/asset/icon/arrow_left.svg" alt="Collapse Icon" class="w-6 h-6 mr-5">
+          <span class="text-md sm:block">Collapse</span>
+        </div>
+
+
+        <div class="flex items-center px-4">
+            <div class="flex items-center ml-1 mt-4"> 
+              <label class="relative cursor-pointer">
+                <!-- Toggle Button -->
+                <input
+                  type="checkbox"
+                  class="sr-only peer"
+                  id="theme-toggle"
+                />
+                <div class="w-6 h-4 flex items-center bg-[#E2E8F0] rounded-full peer peer-checked:after:translate-x-full after:absolute after:left-[px] peer-checked:after:border-white after:bg-white after:border after:border-gray-300 after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#635FC7]"></div>
+              </label>
+            </div>
+            <span class="mt-4 ml-3 sm:block">Dark mode</span>
+        </div>
+        
+
+        <!-- User Icon -->
+        <div class="flex mt-4 items-center px-4 hover:bg-gray-700">
+          <img src="/asset/icon/user.svg" alt="User Icon" class="w-6 h-6 mr-5 ml-1">
+          <span class="sm:block">
+              <p class="font-semibold text-xs">Rudra Devi</p>
+              <p class="text-xs">rudra.devi@gmail.com</p>
+          </span>
+        </div>
+      </div>
+    </div>
+    <aside id="sidebar" class="transition-all duration-300 w-64 min-h-screen bg-white dark:bg-[#484554] hidden md:block ">
+      <div class="text-black dark:text-white mt-4">
+        <!-- Logo -->
+        <div id="logo" class="flex dark:text-white text-black text-lg font-bold pl-4 transition-all duration-300">
+          <span class="ml-1" >LOgGO</span>
+        </div>
+
+        <!-- Home Icon -->
+        <div class="flex items-center px-4 items-center mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/home.svg" alt="Home Icon" class="w-6 h-6 mr-5">
+          <span class="text-md sm:block">Home</span>
+        </div>
+    
+        <!-- Events Icon -->
+        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/events.svg" alt="Events Icon" class="w-5 h-5 mr-5 ml-1">
+          <span class="text-md sm:block">Events</span>
+        </div>
+
+         <!-- Speakers Icon -->
+         <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/speaker.svg" alt="speaker Icon" class="w-5 h-5 mr-5 ml-1">
+          <span class="text-md sm:block">Speakers</span>
+        </div>
+
+        <!-- Report Icon -->
+        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/reports.svg" alt="report Icon" class="w-5 h-5 mr-5 ml-1">
+          <span class="text-md sm:block">Reports</span>
+        </div>
+    
+        <!-- Notification Icon -->
+        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/notification.svg" alt="Notification Icon" class="w-6 h-6 mr-5">
+          <span class="text-md sm:block">Notification</span>
+        </div>
+
+        <!-- Messages Icon -->
+        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/messages.svg" alt="Messages Icon" class="w-6 h-6 mr-5">
+          <span class="text-md sm:block">Messages</span>
+        </div>
+
+        <!-- Settings Icon -->
+        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+          <img src="/asset/icon/setting.svg" alt="Setting Icon" class="w-6 h-6 mr-5">
+          <span class="text-md sm:block">Settings</span>
+        </div>
+
+        <!-- Collapse Icon -->
+        <div class="flex items-center mt-4 hover:bg-gray-700 px-4 cursor-pointer" onclick="toggleSidebar()">
+          <img src="/asset/icon/arrow_left.svg" alt="Collapse Icon" class="w-6 h-6 mr-5">
+          <span class="text-md sm:block">Collapse</span>
+        </div>
+
+
+        <div class="flex items-center px-4">
+            <div class="flex items-center ml-1 mt-4"> 
+              <label class="relative cursor-pointer">
+                <!-- Toggle Button -->
+                <input
+                  type="checkbox"
+                  class="sr-only peer"
+                  id="theme-toggle"
+                />
+                <div class="w-6 h-4 flex items-center bg-[#E2E8F0] rounded-full peer peer-checked:after:translate-x-full after:absolute after:left-[px] peer-checked:after:border-white after:bg-white after:border after:border-gray-300 after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#635FC7]"></div>
+              </label>
+            </div>
+            <span class="mt-4 ml-3 sm:block">Dark mode</span>
+        </div>
+        
+
+        <!-- User Icon -->
+        <div class="flex mt-4 items-center px-4 hover:bg-gray-700">
+          <img src="/asset/icon/user.svg" alt="User Icon" class="w-6 h-6 mr-5 ml-1">
+          <span class="sm:block">
+              <p class="font-semibold text-xs">Rudra Devi</p>
+              <p class="text-xs">rudra.devi@gmail.com</p>
+          </span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 px-4 md:pl-6 md:pr-20 bg-white dark:bg-[#3b3a42]">
+      <div class="mt-6">
+        <h2 class="md:text-2xl text-base dark:text-white">Welcome! here’s your summary</h2>
+      </div>
+
+      <!-- Statistics Section -->
+      <div class="md:mt-6 mt-4 grid  grid-cols-1 md:grid-cols-4 gap-3 mb-6">
+
+        <div class="bg-white dark:bg-[#484554] pointer p-4 rounded dark:border-none border transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80">
+          <div class="flex">
+             <h2 class="font-semibold text-[#64748B] text-base dark:text-white">Total Events</h2>
+             <img src="/asset/icon/caution.svg" alt="caution Icon" class="w-4 h-4 mt-1 ml-2">
+          </div>
+          <div class="flex">
+             <p id="total-events" class="text-xl  font-semibold dark:text-white">100</p>
+             <img src="/asset/icon/arrow_up_right.svg" alt="caution Icon" class="w-4 h-4 mt-2 ml-2">
+             <p class="text-xs text-[#10B981] mt-2">+5.0%</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-[#484554] dark:border-none p-4 rounded border transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80">
+          <div class="flex">
+             <h2 class="font-semibold text-[#64748B] dark:text-white text-base">Active Speakers</h2>
+             <img src="/asset/icon/caution.svg" alt="caution Icon" class="w-4 h-4 mt-1 ml-2">
+          </div>
+          <div class="flex">
+             <p id="total-events" class="text-xl  font-semibold dark:text-white">25</p>
+             <img src="/asset/icon/arrow_down_right.svg" alt="caution Icon" class="w-4 h-4 mt-2 ml-2">
+             <p class="text-xs text-[#10B981] mt-2">-5.0%</p>
+          </div>
+        </div>
+        
+        <div class="bg-white dark:bg-[#484554] dark:border-none p-4 rounded border transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80">
+          <div class="flex">
+             <h2 class="font-semibold text-[#64748B] text-base dark:text-white">Total Registrations</h2>
+             <img src="/asset/icon/caution.svg" alt="caution Icon" class="w-4 h-4 mt-1 ml-2">
+          </div>
+          <div class="flex">
+             <p id="total-events" class="text-xl  font-semibold dark:text-white">300</p>
+             <img src="/asset/icon/arrow_up_right.svg" alt="caution Icon" class="w-4 h-4 mt-2 ml-2">
+             <p class="text-xs text-[#10B981] mt-2">+5.0%</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-[#484554] dark:border-none p-4 rounded border transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80">
+          <div class="flex">
+             <h2 class="font-semibold text-[#64748B] text-base dark:text-white">Total Revenue</h2>
+             <img src="/asset/icon/caution.svg" alt="caution Icon" class="w-4 h-4 mt-1 ml-2">
+          </div>
+          <div class="flex">
+             <p id="total-events" class="text-xl  font-semibold dark:text-white">$500,000</p>
+             <img src="/asset/icon/arrow_up_right.svg" alt="caution Icon" class="w-4 h-4 mt-2 ml-2">
+             <p class="text-xs text-[#10B981] mt-2">+5.0%</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="font-semibold text-lg	mb-1 dark:text-white">Event Registrations per month</h2>
+
+      <!-- Chart canvas  and carousal-->
+      <div class="md:flex ">
+        <!-- Chart canvas -->
+        <div class="container md:w-[50%] md:pl-10 h-50 md:h-80 rounded border dark:border-none dark:bg-[#484554]  md:mr-4">
+          <canvas id="eventChart" width="400" height="250"></canvas>
+        </div>
+
+
+          <!-- Carousel -->
+          <div class="carousel relative md:w-[50%] overflow-hidden rounded mt-4 md:mt-0">
+            <!-- Carousel inner (slides) -->
+            <div id="carousel-slides" class="slides flex transition-transform duration-700 ease-in-out">
+              <!-- Slide 1 -->
+              <div class="slide w-full md:h-80 flex-shrink-0 relative">
+                <img src="./asset/icon/Slide 1.png" class="w-full h-full object-cover">
+
+                <div class="absolute bottom-0">
+                  <h2 class="text-white text-xs px-3 font-bold">Latest News & Updates</h2>
+                  <p class="text-white text-xs px-3 pb-4 pt-2">Turpis interdum nunc varius ornare dignissim pretium. Massa ornare quis aliquet sed vitae. Sed velit nisi, fermentum erat. Fringilla purus, erat fringilla tincidunt quisque non. Pellentesque in ut tellus.</p>
+                </div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="slide w-full h-80 flex-shrink-0 relative">
+                <img src="./asset/icon/Slide 2.png" class="w-full h-full object-cover">
+                <div class="absolute bottom-0">
+                  <h2 class="text-white text-xs px-3 font-bold">Latest News & Updates</h2>
+                  <p class="text-white text-xs px-3 pb-4 pt-2">Turpis interdum nunc varius ornare dignissim pretium. Massa ornare quis aliquet sed vitae. Sed velit nisi, fermentum erat. Fringilla purus, erat fringilla tincidunt quisque non. Pellentesque in ut tellus.</p>
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="slide w-full h-80 flex-shrink-0 relative">
+                <img src="./asset/icon/Slide 3.png" class="w-full h-full object-cover">
+                <div class="absolute bottom-0">
+                  <h2 class="text-white text-xs px-3 font-bold">Latest News & Updates</h2>
+                  <p class="text-white text-xs px-3 pb-4 pt-2">Turpis interdum nunc varius ornare dignissim pretium. Massa ornare quis aliquet sed vitae. Sed velit nisi, fermentum erat. Fringilla purus, erat fringilla tincidunt quisque non. Pellentesque in ut tellus.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button id="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white text-black text-xs px-2 py-1 opacity-70 hover:opacity-100 rounded-full">
+              &#10094;
+            </button>
+            <button id="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white text-black text-xs px-2 py-1 rounded-full opacity-70 hover:opacity-100">
+              &#10095;
+            </button>
+          </div>
+    </div>  
+
+      <!-- Search and Filter Section -->
+      <h2 class="text-lg font-semibold mt-6 dark:text-white">Events History</h2>
+      <div class="flex flex-col md:flex-row md:items-center mt-4 md:mt-0 mb-4">
+        <!-- Search Bar -->
+        <input id="searchInput" type="text" oninput="applyFilters()" placeholder="&#9740  Search events..." class="p-2 dark:bg-[#484554] dark:text-white dark:border-none md:mr-2 border border-gray-300 rounded w-[100%] md:w-[22%]">
+        
+        <!-- Filter by Date -->
+        
+            <select id="filterByDate" onchange="applyFilters()" class="text-xs mt-2 md:mt-0 appearance-none md:px-2 md:py-3 py-2 dark:bg-[#484554] md:mr-2 text-center border dark:text-white dark:border-none border-gray-300">
+              <option value="">Date &ensp; v</option>
+            </select>
+
+    
+        <!-- Filter by Status -->
+        <select id="filterByStatus" onchange="applyFilters()" class="appearance-none text-xs mt-2 md:mt-0 md:px-2 md:py-3 py-2 md:mr-2 dark:bg-[#484554] dark:text-white text-center dark:border-none border border-gray-300">
+          <option value="">Status &ensp; v</option>
+          <option value="not completed">In progress</option> 
+          <option value="completed">Completed</option>
+        </select>
+
+        <!-- Filter by Speaker -->
+        <select id="filterBySpeaker" onchange="applyFilters()" class="text-xs appearance-none mt-2 md:mt-0 py-2 md:px-2 md:py-3 md:mr-2 dark:bg-[#484554] dark:text-white text-center dark:border-none border border-gray-300">
+          <option value="">Name &ensp; v </option>
+        </select>
+
+        <span class="mr-20 text-sm font-semibold dark:text-white mt-2 md:mt-0">Displaying 100 results</span>
+
+        <!-- Sorting Dropdown -->
+        <div class="flex md:ml-auto mt-2 md:mt-0">
+            <p class="mr-2 md:mt-2 dark:text-white dark:border-none">Sort:</p>
+            <select id="sortBy" onchange="applyFilters()" class="py-2 dark:bg-[#484554] ml-auto  md:mx-0 md:mr-2 border dark:text-white dark:border-none border-gray-300">
+              <option value="recent" selected>Most Recent</option>
+              <option value="oldest">Sort by Oldest</option>
+              <option value="attendees">Sort by Attendees</option>
+              <option value="income">Sort by Income</option>
+            </select>
+        </div>
+
+        <div class="flex mt-2 md:mt-0">
+            <div class="py-3 px-4 mr-2 md:ml-2 border border-gray-300 dark:border-none dark:bg-[#484554]">
+              <img src="/asset/icon/three_dotted_lines.svg" alt="three_dotted_lines Icon" class="w-4 h-4">
+            </div>
+
+            <div class="flex ml-auto md:ml-0 py-2 px-4 border dark:border-none dark:bg-[#484554] border-gray-300">
+              <img src="/asset/icon/download.svg" alt="download Icon" class="w-4 mt-1 mr-2 h-4">
+              <p class="dark:text-white">Export</p>
+            </div>
+        </div>
+
+      </div>
+
+      <!-- Table-->
+      <div class="w-full hidden md:block">
+        <table class="bg-white w-full">
+          <thead class="bg-[#F1F5F9] dark:bg-[#6A6676] dark:text-white text-[#64748B] text-xs">
+            <tr class="">
+              <th class="text-start pl-3 py-4">Event Name</th>
+              <th class="text-start pl-3 py-4 hidden md:table-cell">Date</th>
+              <th class="text-start pl-3 py-4 hidden md:table-cell">Speaker</th>
+              <th class="text-start pl-3 py-4">Status</th>
+            </tr>
+          </thead>
+          <tbody id="event-table-body" class="relative dark:bg-[#484554] dark:text-white"></tbody>
+        </table>
+      </div>
+
+      <!-- Table for mobile-->
+      <div class="w-full md:hidden">
+        <!-- Header row -->
+        <div class="bg-[#F1F5F9] dark:bg-[#6A6676] dark:text-white text-[#64748B] text-xs grid grid-cols-2 py-4 px-4 -mx-4 md:-mx-0">
+          <div class="text-start">Event Name</div>
+          <div class="text-start ml-auto">Status</div>
+        </div>
+      </div>
+
+      <!-- Mobile version (flex layout) -->
+      <div class="w-full md:hidden">
+        <div id="event-mobile-table-body" class="relative dark:bg-[#484554] dark:text-white"></div>
+      </div>
+
+
+        <div class="flex">
+          <!-- Pagination Controls -->
+          <div class="flex mt-4">
+            <button id="prevBtn" class="h-9 w-9 bg-[#E2E8F0] dark:bg-[#484554] dark:text-white text-xs" disabled>&#10094; </button>
+            <div id="pagination-numbers" class="flex space-x-3 mt-1 dark:text-white mx-2"></div>
+            <button id="nextBtn" class="text-xs dark:bg-[#484554] dark:border-none dark:text-white border h-9 w-9"> &#10095;</button>
+          </div>
+
+          <div class="ml-auto dark:border-none mt-4">
+              <label for="rowsPerPage" class="mr-2  text-sm dark:text-white hidden md:inline-block">Show:</label>
+              <select id="rowsPerPage" class="p-1 dark:text-white dark:bg-[#484554] dark:border-none  text-sm border border-gray-300">
+                <option value="10" selected>10 rows</option>
+                <option value="15">15 rows</option>
+              </select>
+          </div>
+       </div>
+
+       <div class="md:hidden text-black dark:text-white mt-4 grid grid-cols-5 gap-4 sm:gap-6 items-center -mx-5 border pb-6">
+          <!-- Home Icon -->
+          <div class="flex flex-col items-center hover:bg-gray-700 p-2 rounded-md border-t-4 border-[#8576FF]">
+            <img src="/asset/icon/home.svg" alt="Home Icon" class="w-6 h-6 mx-auto">
+            <div class="text-xs text-[#8576FF] mt-3 sm:text-md">Home</div>
+          </div>
+        
+          <!-- Events Icon -->
+          <div class="flex flex-col items-center hover:bg-gray-700 p-2 rounded-md">
+            <img src="/asset/icon/events.svg" alt="Events Icon" class="w-5 h-5 mx-auto">
+            <div class="text-xs sm:text-md mt-3">Events</div>
+          </div>
+        
+          <!-- Speakers Icon -->
+          <div class="flex flex-col items-center hover:bg-gray-700 p-2 rounded-md">
+            <img src="/asset/icon/speaker.svg" alt="Speaker Icon" class="w-5 h-5 mx-auto">
+            <div class="text-xs sm:text-md mt-3">Speakers</div>
+          </div>
+        
+          <!-- Report Icon -->
+          <div class="flex flex-col items-center hover:bg-gray-700 p-2 rounded-md">
+            <img src="/asset/icon/reports.svg" alt="Report Icon" class="w-5 h-5 mx-auto">
+            <div class="text-xs sm:text-md mt-3">Reports</div>
+          </div>
+        
+          <!-- User Icon -->
+          <div class="flex flex-col items-center hover:bg-gray-700 p-2 rounded-md">
+            <img src="/asset/icon/user.svg" alt="User Icon" class="w-6 h-6 mx-auto">
+            <div class="text-xs sm:text-md mt-3">Profile</div>
+          </div>
+       </div>
+      
+
+    <!-- Modal Structure -->
+    <div id="eventModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+      <div class="bg-white px-6 pt-6 w-1/3 relative"> <!-- Added relative positioning -->
+        <!-- Close 'X' button -->
+        <button id="closeXModal" class="absolute border top-6 right-4 bg-white rounded-full w-8 h-8 flex items-center justify-center">
+          &times;
+        </button>
+
+        <!-- Event Info -->
+        <h2 id="modalEventName" class="text-xl font-bold"></h2>
+        <p><span id="modalEventDate"></span></p>
+        <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        <img src="./asset/icon/Avatar Group.svg" alt="avatar group" class="w-20 h-9 mt-6"/>
+        <p>3 Guest Speakers</p>
+        <p>300 Attendees</p>
+
+        <!-- Buttons Section -->
+        <div class="blue flex bg-[#F8FAFC] -mx-6 px-6 py-6"> <!-- Adjust padding to cancel the outer div padding -->
+          <button id="closeModal" class="bg-white text-black border px-4 py-2 rounded">Close</button>
+          <div class="ml-auto">
+            <button id="deleteEvent" class="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
+            <button id="markComplete" class="bg-[#8576FF] text-white px-4 py-2 rounded">Mark as completed</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    </div>
+
+    
+
+    </div>
+  </div>
+  <script src="/src/icon_collapse.js"></script>
+  <script src="/src/darkmode_toggle.js"></script>
+  <script src="/src/chart.js"></script>
+  <script src="/src/chartMobile.js"></script>
+  <script src="/src/event_history.js"></script>
+  <script src="/src/carousel.js"></script>
+  <script src="/src/sidebar.js"></script>
+</body>
+</html>
