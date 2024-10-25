@@ -17,7 +17,7 @@
   </script>
 </head>
 
-<body id="body" class="bg-white text-gray-800 dark:text-gray-200 transition-colors duration-500" >
+<body id="body" class="bg-white min-h-screen text-gray-800 dark:text-gray-200 transition-colors duration-500" >
 
   <!-- Sidebar -->
   <div class="md:flex bg-white dark:bg-[#484554] ">
@@ -122,49 +122,49 @@
         </div>
     
         <!-- Events Icon -->
-        <div class="flex items-center px-4 py-2 mt-4 cursor-pointer hover:bg-[#FCF7FF]">
+        <div class="flex items-center px-4 py-2 mt-4 cursor-pointer dark:hover:bg-[#8576FF] hover:bg-[#FCF7FF]">
           <img src="/asset/icon/events.svg" alt="Events Icon" class="w-5 h-5 mr-5 ml-1">
           <span class="text-md sm:block">Events</span>
         </div>
 
          <!-- Speakers Icon -->
-         <div class="flex items-center px-4 mt-4 cursor-pointer py-2 hover:bg-[#FCF7FF]">
+         <div class="flex items-center px-4 mt-4 cursor-pointer py-2 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
           <img src="/asset/icon/speaker.svg" alt="speaker Icon" class="w-5 h-5 mr-5 ml-1">
           <span class="text-md sm:block">Speakers</span>
         </div>
 
         <!-- Report Icon -->
-        <div class="flex items-center px-4 mt-4 cursor-pointer py-2 hover:bg-[#FCF7FF]">
+        <div class="flex items-center px-4 mt-4 cursor-pointer py-2 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
           <img src="/asset/icon/reports.svg" alt="report Icon" class="w-5 h-5 mr-5 ml-1">
           <span class="text-md sm:block">Reports</span>
         </div>
     
         <!-- Notification Icon -->
-        <div class="flex items-center px-4 mt-4 cursor-pointer py-2 hover:bg-[#FCF7FF]">
+        <div class="flex items-center px-4 mt-4 cursor-pointer py-2 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
           <img src="/asset/icon/notification.svg" alt="Notification Icon" class="w-6 h-6 mr-5">
           <span class="text-md sm:block">Notification</span>
         </div>
 
         <!-- Messages Icon -->
-        <div class="flex items-center px-4 mt-4 cursor-pointer py-2 hover:bg-[#FCF7FF]">
+        <div class="flex items-center px-4 mt-4 cursor-pointer py-2 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
           <img src="/asset/icon/messages.svg" alt="Messages Icon" class="w-6 h-6 mr-5">
           <span class="text-md sm:block">Messages</span>
         </div>
 
         <!-- Settings Icon -->
-        <div class="flex items-center px-4 py-2 mt-4 cursor-pointer hover:bg-[#FCF7FF]">
+        <div class="flex items-center px-4 py-2 mt-4 cursor-pointer hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
           <img src="/asset/icon/setting.svg" alt="Setting Icon" class="w-6 h-6 mr-5">
           <span class="text-md sm:block">Settings</span>
         </div>
 
         <!-- Collapse Icon -->
-        <div class="flex items-center mt-4 cursor-pointer hover:bg-[#FCF7FF] py-2 px-4 cursor-pointer" onclick="toggleSidebar()">
+        <div class="flex items-center mt-4 cursor-pointer hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] py-2 px-4 cursor-pointer" onclick="toggleSidebar()">
           <img src="/asset/icon/arrow_left.svg" alt="Collapse Icon" class="w-6 h-6 mr-5">
           <span class="text-md sm:block">Collapse</span>
         </div>
 
 
-        <div class="flex items-center px-4 cursor-pointer hover:bg-[#FCF7FF]">
+        <div class="flex items-center px-4 cursor-pointer hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
             <div class="flex items-center ml-1 mt-4"> 
               <label class="relative cursor-pointer">
                 <!-- Toggle Button -->
@@ -181,7 +181,7 @@
         
 
         <!-- User Icon -->
-        <div class="flex mt-4 items-center px-4 cursor-pointer hover:bg-[#FCF7FF] py-2">
+        <div class="flex mt-4 items-center px-4 cursor-pointer hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] py-2">
           <img src="/asset/icon/user.svg" alt="User Icon" class="w-6 h-6 mr-5 ml-1">
           <span class="sm:block">
               <p class="font-semibold text-xs">Rudra Devi</p>
@@ -192,7 +192,7 @@
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 px-4 md:pl-6 md:pr-20 bg-white md:pb-12 dark:bg-[#3b3a42]">
+    <div class="flex-1 px-4 md:pl-6 md:pr-20 bg-white md:pb-12 min-h-screen dark:bg-[#3b3a42]">
       <div class="mt-6">
         <h2 class="md:text-2xl text-base dark:text-white">Welcome! here’s your summary</h2>
       </div>
@@ -305,9 +305,9 @@
 
       <div class="flex flex-col md:flex-row md:items-center mt-4  md:mt-0 mb-4">
         <div class="relative w-full md:mr-3 md:w-[22%]">
-          <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-          <input id="searchInput" type="text" oninput="applyFilters()" placeholder=" Search " 
-                 class="pl-10 p-2 dark:bg-[#484554] dark:text-white dark:border-none md:mr-2 border border-gray-300 rounded w-full">
+          <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300"></i>
+          <input id="searchInput" type="text" oninput="applyFilters()" placeholder=" Search... " 
+                 class="pl-10 p-2 text-sm dark:bg-[#484554] dark:text-white dark:border-none md:mr-2 border border-gray-300 rounded w-full">
         </div>
         <!-- Filter by Date -->
         
