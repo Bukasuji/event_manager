@@ -109,7 +109,7 @@ function displayTableMobile() {
     
     // Container for event name and status
     const eventInfoContainer = document.createElement('div');
-    eventInfoContainer.classList.add('flex', 'justify-between', 'items-center', 'w-full');
+    eventInfoContainer.classList.add('flex', 'justify-between', 'items-center', 'w-full',);
 
     // Event name container with dropdown icon
     const eventNameContainer = document.createElement('div');
@@ -163,7 +163,11 @@ function displayTableMobile() {
       dropdownIcon.classList.toggle('rotate-90'); // Rotate icon when toggled
 
       // Toggle background color for event name container
-      eventInfoContainer.classList.toggle('bg-[#F2F2F7]');
+      if (dropdownContent.classList.contains('hidden')) {
+        eventInfoContainer.classList.remove('bg-[#F2F2F7]', 'dark:bg-[#2E2E2E]');
+      } else {
+        eventInfoContainer.classList.add('bg-[#F2F2F7]', 'dark:bg-[#2E2E2E]');
+      }
     });
 
     // Append the row to the mobile table body
