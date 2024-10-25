@@ -6,6 +6,7 @@
   <title>Event Management</title>
   <link rel="stylesheet" href="dist/styles.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/src/script.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -22,8 +23,8 @@
   <div class="md:flex bg-white dark:bg-[#484554] ">
     <div class="bg-white dark:bg-[#484554] py-4 md:hidden">
       <div class="flex">
-          <div id="logo" class="flex dark:text-white text-black text-lg font-bold pl-4 transition-all duration-300">
-            <span class="ml-1" >LOgGO</span>
+          <div id="" class="flex dark:text-white text-black text-lg font-bold pl-4 transition-all duration-300">
+            <span class="ml-1" >LOg</span>
           </div>
 
           <div id="hamburger-btn" class="md:hidden ml-auto">
@@ -33,8 +34,8 @@
 
       <div id="nav-menu" class="fixed inset-0 bg-white dark:bg-[#484554] dark:text-white hidden space-y-8 z-40">
         <!-- Logo -->
-        <div id="logo" class="flex dark:text-white border-b text-black text-lg font-bold pt-10 pb-4 px-4 transition-all duration-300">
-          <span class="ml-1" >LOgGO</span>
+        <div id="" class="flex dark:text-white border-b text-black text-lg font-bold pt-10 pb-4 px-4 transition-all duration-300">
+          <span class="ml-1" >LOg</span>
           <div id="close-btn" class="border text-sm dark:text-black dark:bg-white rounded-full py px-2 ml-auto">x</div>
         </div>
 
@@ -113,63 +114,63 @@
         </div>
       </div>
     </div>
-    <aside id="sidebar" class="transition-all duration-300 w-64 min-h-screen bg-white dark:bg-[#484554] hidden md:block ">
+    <aside id="sidebar" class="transition-all duration-300 w-64 min-h-screen bg-white dark:bg-[#484554] hidden md:block border-r px-1 ">
       <div class="text-black dark:text-white mt-4">
         <!-- Logo -->
         <div id="logo" class="flex dark:text-white text-black text-lg font-bold pl-4 transition-all duration-300">
-          <span class="ml-1" >LOgGO</span>
+          <span class="ml-1" >LOg</span>
         </div>
 
         <!-- Home Icon -->
-        <div class="flex items-center px-4 items-center mt-4 hover:bg-gray-700">
+        <div class="flex items-center px-4 bg-[#FCF7FF] text-[#8576FF] items-center mt-4 py-2 cursor-pointer hover:bg-[#FCF7FF]">
           <img src="/asset/icon/home.svg" alt="Home Icon" class="w-6 h-6 mr-5">
           <span class="text-md sm:block">Home</span>
         </div>
     
         <!-- Events Icon -->
-        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+        <div class="flex items-center px-4 py-2 mt-4 cursor-pointer hover:bg-[#FCF7FF]">
           <img src="/asset/icon/events.svg" alt="Events Icon" class="w-5 h-5 mr-5 ml-1">
           <span class="text-md sm:block">Events</span>
         </div>
 
          <!-- Speakers Icon -->
-         <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+         <div class="flex items-center px-4 mt-4 cursor-pointer py-2 hover:bg-[#FCF7FF]">
           <img src="/asset/icon/speaker.svg" alt="speaker Icon" class="w-5 h-5 mr-5 ml-1">
           <span class="text-md sm:block">Speakers</span>
         </div>
 
         <!-- Report Icon -->
-        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+        <div class="flex items-center px-4 mt-4 cursor-pointer py-2 hover:bg-[#FCF7FF]">
           <img src="/asset/icon/reports.svg" alt="report Icon" class="w-5 h-5 mr-5 ml-1">
           <span class="text-md sm:block">Reports</span>
         </div>
     
         <!-- Notification Icon -->
-        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+        <div class="flex items-center px-4 mt-4 cursor-pointer py-2 hover:bg-[#FCF7FF]">
           <img src="/asset/icon/notification.svg" alt="Notification Icon" class="w-6 h-6 mr-5">
           <span class="text-md sm:block">Notification</span>
         </div>
 
         <!-- Messages Icon -->
-        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+        <div class="flex items-center px-4 mt-4 cursor-pointer py-2 hover:bg-[#FCF7FF]">
           <img src="/asset/icon/messages.svg" alt="Messages Icon" class="w-6 h-6 mr-5">
           <span class="text-md sm:block">Messages</span>
         </div>
 
         <!-- Settings Icon -->
-        <div class="flex items-center px-4 mt-4 hover:bg-gray-700">
+        <div class="flex items-center px-4 py-2 mt-4 cursor-pointer hover:bg-[#FCF7FF]">
           <img src="/asset/icon/setting.svg" alt="Setting Icon" class="w-6 h-6 mr-5">
           <span class="text-md sm:block">Settings</span>
         </div>
 
         <!-- Collapse Icon -->
-        <div class="flex items-center mt-4 hover:bg-gray-700 px-4 cursor-pointer" onclick="toggleSidebar()">
+        <div class="flex items-center mt-4 cursor-pointer hover:bg-[#FCF7FF] py-2 px-4 cursor-pointer" onclick="toggleSidebar()">
           <img src="/asset/icon/arrow_left.svg" alt="Collapse Icon" class="w-6 h-6 mr-5">
           <span class="text-md sm:block">Collapse</span>
         </div>
 
 
-        <div class="flex items-center px-4">
+        <div class="flex items-center px-4 cursor-pointer hover:bg-[#FCF7FF]">
             <div class="flex items-center ml-1 mt-4"> 
               <label class="relative cursor-pointer">
                 <!-- Toggle Button -->
@@ -186,7 +187,7 @@
         
 
         <!-- User Icon -->
-        <div class="flex mt-4 items-center px-4 hover:bg-gray-700">
+        <div class="flex mt-4 items-center px-4 cursor-pointer hover:bg-[#FCF7FF] py-2">
           <img src="/asset/icon/user.svg" alt="User Icon" class="w-6 h-6 mr-5 ml-1">
           <span class="sm:block">
               <p class="font-semibold text-xs">Rudra Devi</p>
@@ -307,10 +308,13 @@
 
       <!-- Search and Filter Section -->
       <h2 class="text-lg font-semibold mt-6 dark:text-white">Events History</h2>
-      <div class="flex flex-col md:flex-row md:items-center mt-4 md:mt-0 mb-4">
-        <!-- Search Bar -->
-        <input id="searchInput" type="text" oninput="applyFilters()" placeholder="&#9740  Search events..." class="p-2 dark:bg-[#484554] dark:text-white dark:border-none md:mr-2 border border-gray-300 rounded w-[100%] md:w-[22%]">
-        
+
+      <div class="flex flex-col md:flex-row md:items-center mt-4  md:mt-0 mb-4">
+        <div class="relative w-full md:mr-3 md:w-[22%]">
+          <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          <input id="searchInput" type="text" oninput="applyFilters()" placeholder=" Search " 
+                 class="pl-10 p-2 dark:bg-[#484554] dark:text-white dark:border-none md:mr-2 border border-gray-300 rounded w-full">
+        </div>
         <!-- Filter by Date -->
         
             <select id="filterByDate" onchange="applyFilters()" class="text-xs mt-2 md:mt-0 appearance-none md:px-2 md:py-3 py-2 dark:bg-[#484554] md:mr-2 text-center border dark:text-white dark:border-none border-gray-300">

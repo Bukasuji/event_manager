@@ -18,9 +18,9 @@
     });
 
     // Toggle logo size
-    if (logo.textContent === "LOgGO") {
-        logo.textContent = "L";
+    if (logo.textContent === "LOg") {
+        logo.textContent = "LOg";
       } else {
-        logo.textContent = "LOgGO";
+        logo.textContent = "LOg";
       }
   }
