@@ -101,6 +101,11 @@ function displayTableMobile() {
   paginatedEvents.forEach(event => {
     const eventRow = document.createElement('div');
     eventRow.classList.add('event-row', 'flex', 'flex-col', 'py-2', 'cursor-pointer');
+
+    // Add row click event listener to open the modal
+    eventRow.addEventListener('click', () => {
+      openModal(event); // Pass event details to openModal function
+    });
     
     // Container for event name and status
     const eventInfoContainer = document.createElement('div');
@@ -118,7 +123,7 @@ function displayTableMobile() {
     // Event name
     const eventNameDiv = document.createElement('div');
     eventNameDiv.textContent = event.event_name;
-    eventNameDiv.classList.add('text-sm')
+    eventNameDiv.classList.add('text-sm');
 
     // Append dropdown icon and event name to the container
     eventNameContainer.appendChild(dropdownIcon);
@@ -127,7 +132,7 @@ function displayTableMobile() {
 
     // Status badge
     const statusDiv = document.createElement('div');
-    statusDiv.classList.add('status-badge', 'px-2','py-1', 'mt-2', 'inline-block', 'rounded-full', 'text-xs', 'text-right');
+    statusDiv.classList.add('status-badge', 'px-2', 'py-1', 'mt-2', 'inline-block', 'rounded-full', 'text-xs', 'text-right');
 
     if (event.status === 'In progress') {
       statusDiv.classList.add('bg-[#DBEAFE]', 'dark:bg-transparent', 'dark:text-[#77B1FF]', 'dark:border', 'dark:border-[#77B1FF]', 'text-[#3B82F6]');
@@ -143,16 +148,17 @@ function displayTableMobile() {
     // Dropdown content (hidden by default)
     const dropdownContent = document.createElement('div');
     dropdownContent.classList.add('dropdown-content', 'flex', 'text-sm', 'bg-[#F2F2F7]', 'hidden', 'pl-0', 'py-4'); // Hidden and with padding for alignment
-    dropdownContent.innerHTML =
-     `    <p>${event.speaker}</p>
-          <p class='ml-auto'>${event.date}</p>
+    dropdownContent.innerHTML = `
+      <p>${event.speaker}</p>
+      <p class='ml-auto'>${event.date}</p>
     `;
 
     // Append dropdown content to the event row
     eventRow.appendChild(dropdownContent);
 
     // Add event listener to toggle the dropdown
-    eventNameContainer.addEventListener('click', () => {
+    eventNameContainer.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent modal opening when dropdown is toggled
       dropdownContent.classList.toggle('hidden');
       dropdownIcon.classList.toggle('rotate-90'); // Rotate icon when toggled
 
