@@ -17,7 +17,7 @@
   </script>
 </head>
 
-<body id="body" class="bg-gray-200 text-gray-800 dark:text-gray-200 transition-colors duration-500" >
+<body id="body" class="bg-white text-gray-800 dark:text-gray-200 transition-colors duration-500" >
 
   <!-- Sidebar -->
   <div class="md:flex bg-white dark:bg-[#484554] ">
@@ -114,7 +114,7 @@
         </div>
       </div>
     </div>
-    <aside id="sidebar" class="transition-all duration-300 w-64 min-h-screen bg-white dark:bg-[#484554] hidden md:block border-r px-1 ">
+    <aside id="sidebar" class="transition-all duration-300 w-64 min-h-screen bg-white dark:bg-[#484554] hidden md:block border-r dark:border-none px-1 ">
       <div class="text-black dark:text-white mt-4">
         <!-- Logo -->
         <div id="logo" class="flex dark:text-white text-black text-lg font-bold pl-4 transition-all duration-300">
@@ -122,9 +122,10 @@
         </div>
 
         <!-- Home Icon -->
-        <div class="flex items-center px-4 bg-[#FCF7FF] text-[#8576FF] items-center mt-4 py-2 cursor-pointer hover:bg-[#FCF7FF]">
-          <img src="/asset/icon/home.svg" alt="Home Icon" class="w-6 h-6 mr-5">
-          <span class="text-md sm:block">Home</span>
+        <div class="flex items-center px-4 bg-[#FCF7FF] dark:bg-[#8576FF] text-[#8576FF] items-center mt-4 py-2 cursor-pointer hover:bg-[#FCF7FF]">
+          <img src="/asset/icon/home.svg" alt="Home Icon" class="w-6 md:dark:hidden h-6 mr-5">
+          <img src="/asset/icon/home copy.svg" alt="Home Icon" class="w-6 hidden md:dark:inline-block h-6 mr-5">
+          <span class="text-md dark:text-white sm:block">Home</span>
         </div>
     
         <!-- Events Icon -->
@@ -177,7 +178,7 @@
                 <input
                   type="checkbox"
                   class="sr-only peer"
-                  id="theme-toggle"
+                  id="theme-toggle_desktop"
                 />
                 <div class="w-6 h-4 flex items-center bg-[#E2E8F0] rounded-full peer peer-checked:after:translate-x-full after:absolute after:left-[px] peer-checked:after:border-white after:bg-white after:border after:border-gray-300 after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#635FC7]"></div>
               </label>
@@ -198,7 +199,7 @@
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 px-4 md:pl-6 md:pr-20 bg-white dark:bg-[#3b3a42]">
+    <div class="flex-1 px-4 md:pl-6 md:pr-20 bg-white md:pb-12 dark:bg-[#3b3a42]">
       <div class="mt-6">
         <h2 class="md:text-2xl text-base dark:text-white">Welcome! here’s your summary</h2>
       </div>
@@ -477,6 +478,7 @@
   </div>
   <script src="/src/icon_collapse.js"></script>
   <script src="/src/darkmode_toggle.js"></script>
+  <script src="/src/desktop_toggle_dark.js"></script>
   <script src="/src/chart.js"></script>
   <script src="/src/chartMobile.js"></script>
   <script src="/src/event_history.js"></script>
